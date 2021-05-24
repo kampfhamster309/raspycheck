@@ -2,6 +2,8 @@
 
 **raspycheck** is a small tool to grab infos from and execute commands on a Raspberry Pi via SSH.
 
+**raspycheck** is in an early alpha stage!
+
 ## Usage:
 
 ```python
@@ -43,6 +45,7 @@ raspycheck is currently only tested with Python3.9
 
 ## TODO:
 
+- Extend errorhandling
 - Extend functionality
 - Add tests
 - Relax/Check dependencies

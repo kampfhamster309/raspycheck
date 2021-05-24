@@ -8,7 +8,7 @@ with open('HISTORY.md') as history_file:
 
 setup_args = dict(
     name='raspycheck',
-    version='0.0.1',
+    version='0.0.2',
     description='Useful tool to execute commands via SSH on a RPI or grab system info from said RPI',
     long_description_content_type="text/markdown",
     long_description=README + '\n\n' + HISTORY,
@@ -20,7 +20,7 @@ setup_args = dict(
     url='https://github.com/kampfhamster309/raspycheck',
     test_suite='nose.collector',
     tests_require=['nose']
-    #download_url='https://pypi.org/project/elastictools/'
+    download_url='https://pypi.org/project/raspycheck/'
 )
 
 install_requires = [
