@@ -1,8 +1,8 @@
 import sys, os, socket, termcolor, logging
 from paramiko import SSHClient
-import Lib
-import _get_info
-import _exec_cmds
+from .Lib import Lib
+from ._get_info import _get_info
+from ._exec_cmds import _exec_cmds
 
 @Lib.add_methods_from(_get_info)
 @Lib.add_methods_from(_exec_cmds)

@@ -1,4 +1,4 @@
-import Lib
+from raspycheck.Lib import Lib
 
 __methods__ = []
 register_method = Lib.register_method(__methods__)
