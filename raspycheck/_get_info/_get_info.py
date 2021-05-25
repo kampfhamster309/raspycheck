@@ -3,6 +3,7 @@ from raspycheck.Lib import Lib
 __methods__ = []
 register_method = Lib.register_method(__methods__)
 
+
 @register_method
 def get_rpi_ip(self):
     """
@@ -12,6 +13,7 @@ def get_rpi_ip(self):
     """
     rpip = self.run_command_get_output('hostname -I').replace("\n", "")
     return rpip
+
 
 @register_method
 def get_rpi_hostname(self):
@@ -23,6 +25,7 @@ def get_rpi_hostname(self):
     hostname = self.run_command_get_output('hostname').replace("\n", "")
     return hostname
 
+
 @register_method
 def get_rpi_cpu_temp(self):
     """
@@ -32,6 +35,7 @@ def get_rpi_cpu_temp(self):
     """
     temp = self.run_command_get_output('vcgencmd measure_temp').replace("\n", "").replace("temp=", "")
     return temp
+
 
 @register_method
 def get_rpi_usb_devices(self):
@@ -45,6 +49,7 @@ def get_rpi_usb_devices(self):
     devices = list(filter(None, devices))
     return devices
 
+
 @register_method
 def get_rpi_version(self):
     """
@@ -54,6 +59,7 @@ def get_rpi_version(self):
     """
     version = self.run_command_get_output('cat /proc/version').replace("\n", "")
     return version
+
 
 @register_method
 def get_rpi_free_memory(self):
@@ -65,6 +71,7 @@ def get_rpi_free_memory(self):
     memory = self.run_command_get_output('free').split()[9]
     return memory
 
+
 @register_method
 def get_rpi_total_memory(self):
     """
@@ -74,6 +81,7 @@ def get_rpi_total_memory(self):
     """
     memory = self.run_command_get_output('free').split()[7]
     return memory
+
 
 @register_method
 def get_rpi_available_essids(self):
@@ -85,6 +93,7 @@ def get_rpi_available_essids(self):
     essids = self.run_command_get_output('iwlist wlan0 scan | grep ESSID')
     return essids
 
+
 @register_method
 def get_rpi_date(self):
     """
@@ -95,6 +104,7 @@ def get_rpi_date(self):
     date = self.run_command_get_output('date').replace("\n", "")
     return date
 
+
 @register_method
 def get_rpi_list_installed_packages(self):
     """
@@ -102,6 +112,7 @@ def get_rpi_list_installed_packages(self):
     """
     packages = self.run_command_get_output('dpkg --get-selections')
     return packages
+
 
 @register_method
 def get_all_rpi_info(self):

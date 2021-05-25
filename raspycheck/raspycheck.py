@@ -1,12 +1,17 @@
-import sys, os, socket, termcolor, logging
+import logging
+import sys
+import termcolor
+
 from paramiko import SSHClient
+
 from .Lib import Lib
-from ._get_info import _get_info
 from ._exec_cmds import _exec_cmds
+from ._get_info import _get_info
+
 
 @Lib.add_methods_from(_get_info)
 @Lib.add_methods_from(_exec_cmds)
-class RasPyCheck():
+class RasPyCheck:
     logger = None
     loglevel = None
     ip = None
@@ -31,14 +36,14 @@ class RasPyCheck():
         self.user = user
         self.password = password
         self.keep_connection_open = persist
-        if self.keep_connection_open == True:
+        if self.keep_connection_open:
             self.setup_client()
 
     def set_loglevel(self, debug):
         """
         Sets loglevel to eiter DEBUG or ERROR
         """
-        if debug == True:
+        if debug:
             self.loglevel = logging.DEBUG
         else:
             self.loglevel = logging.ERROR
@@ -48,7 +53,7 @@ class RasPyCheck():
         Initializes the logger
         """
         handler = logging.StreamHandler(sys.stdout)
-        frm = logging.Formatter("[raspycheck] {asctime} - {levelname}: {message}", "%d.%m.%Y %H:%M%S", style="{")
+        frm = logging.Formatter("[raspycheck] {asctime} - {levelname}: {message}", "%d.%m.%Y %H:%M:%S", style="{")
         handler.setFormatter(frm)
         self.logger = logging.getLogger()
         self.logger.addHandler(handler)
@@ -72,7 +77,7 @@ class RasPyCheck():
 
     def cleanup_cmd_execution(self, stdin, stdout, stderr, client):
         """
-        Cleanup after cmd execution. Closes streams and client if the latter is not persistant.
+        Cleanup after cmd execution. Closes streams and client if the latter is not persistent.
 
         :param paramiko.channel.ChannelStdinFile stdin: SSH stdin object
         :param paramiko.channel.ChannelFile stdout: SSH stdout object
@@ -82,7 +87,7 @@ class RasPyCheck():
         stdin.close()
         stdout.close()
         stderr.close()
-        if self.ssh_client == None:
+        if self.ssh_client is None:
             client.close()
 
     def get_client(self):
